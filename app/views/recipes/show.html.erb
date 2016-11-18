@@ -24,7 +24,13 @@
       <dd><%= @recipe.favorite %></dd>
 
       <dt>Category</dt>
-      <dd><%= @recipe.category_id %></dd>
+      <dd>
+        <% if @recipe.category.present? %>
+          <a href="/categories/<%= @recipe.category_id %>">
+            <%= @recipe.category.name %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

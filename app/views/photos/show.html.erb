@@ -9,7 +9,13 @@
       <dd><%= @photo.imagejpg %></dd>
 
       <dt>Recipe</dt>
-      <dd><%= @photo.recipe_id %></dd>
+      <dd>
+        <% if @photo.recipe.present? %>
+          <a href="/recipes/<%= @photo.recipe_id %>">
+            <%= @photo.recipe.cooking_time %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

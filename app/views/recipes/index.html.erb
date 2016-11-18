@@ -27,7 +27,13 @@
         <td><%= recipe.final_tips %></td>
         <td><%= recipe.difficulty %></td>
         <td><%= recipe.favorite %></td>
-        <td><%= recipe.category.name %></td>
+        <td>
+          <% if recipe.category.present? %>
+            <a href="/categories/<%= recipe.category.id %>">
+              <%= recipe.category.name %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/recipes/<%= recipe.id %>" class="btn btn-primary">Show</a>
           <a href="/recipes/<%= recipe.id %>/edit" class="btn btn-warning">Edit</a>
