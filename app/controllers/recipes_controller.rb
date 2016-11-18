@@ -6,6 +6,8 @@ class RecipesController < ApplicationController
   end
 
   def show
+    @combination = Combination.new
+    @photo = Photo.new
     @recipe = Recipe.find(params[:id])
 
     render("recipes/show.html.erb")

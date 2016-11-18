@@ -51,6 +51,73 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_recipe" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for cooking_time -->
+      <div class="form-group">
+        <label for="cooking_time" class="control-label">
+          Cooking time
+        </label>
+
+        <input type="text" id="cooking_time" name="cooking_time" placeholder="Cooking time" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for instructions -->
+      <div class="form-group">
+        <label for="instructions" class="control-label">
+          Instructions
+        </label>
+
+        <input type="text" id="instructions" name="instructions" placeholder="Instructions" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for final_tips -->
+      <div class="form-group">
+        <label for="final_tips" class="control-label">
+          Final tips
+        </label>
+
+        <input type="text" id="final_tips" name="final_tips" placeholder="Final tips" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for difficulty -->
+      <div class="form-group">
+        <label for="difficulty" class="control-label">
+          Difficulty
+        </label>
+
+        <input type="text" id="difficulty" name="difficulty" placeholder="Difficulty" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for favorite -->
+      <div class="checkbox">
+        <label for="favorite">
+          <input type="checkbox" id="favorite" name="favorite" value="1" <%= "checked" if @recipe.favorite %>>
+          Favorite
+        </label>
+      </div>
+
+      <!-- Label and input for category_id -->
+      <input type="hidden" name="category_id" value="<%= @category.id %>">
+
+      <button class="btn btn-block btn-success">
+        Create Recipe
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
