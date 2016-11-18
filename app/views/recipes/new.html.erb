@@ -1,0 +1,90 @@
+<!-- Validation failure messages -->
+<% if @recipe.errors.any? %>
+  <% @recipe.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Recipe</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_recipe" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for cooking_time -->
+      <div class="form-group">
+        <label for="cooking_time" class="control-label">
+          Cooking time
+        </label>
+
+        <input type="text" id="cooking_time" name="cooking_time" placeholder="Cooking time" class="form-control" value="<%= @recipe.cooking_time %>">
+      </div>
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @recipe.name %>">
+      </div>
+
+      <!-- Label and input for instructions -->
+      <div class="form-group">
+        <label for="instructions" class="control-label">
+          Instructions
+        </label>
+
+        <input type="text" id="instructions" name="instructions" placeholder="Instructions" class="form-control" value="<%= @recipe.instructions %>">
+      </div>
+
+      <!-- Label and input for final_tips -->
+      <div class="form-group">
+        <label for="final_tips" class="control-label">
+          Final tips
+        </label>
+
+        <input type="text" id="final_tips" name="final_tips" placeholder="Final tips" class="form-control" value="<%= @recipe.final_tips %>">
+      </div>
+
+      <!-- Label and input for difficulty -->
+      <div class="form-group">
+        <label for="difficulty" class="control-label">
+          Difficulty
+        </label>
+
+        <input type="text" id="difficulty" name="difficulty" placeholder="Difficulty" class="form-control" value="<%= @recipe.difficulty %>">
+      </div>
+
+      <!-- Label and input for favorite -->
+      <div class="checkbox">
+        <label for="favorite">
+          <input type="checkbox" id="favorite" name="favorite" value="1" <%= "checked" if @recipe.favorite %>>
+          Favorite
+        </label>
+      </div>
+
+      <!-- Label and input for category_id -->
+      <div class="form-group">
+        <label for="category_id" class="control-label">
+          Category
+        </label>
+
+        <input type="text" id="category_id" name="category_id" placeholder="Category" class="form-control" value="<%= @recipe.category_id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Recipe
+      </button>
+      or
+      <a href="/recipes">Cancel</a>
+    </form>
+  </div>
+</div>
