@@ -1,6 +1,8 @@
 class Combination < ApplicationRecord
   # Direct associations
 
+  belongs_to :recipe
+
   # Indirect associations
 
   # Validations
