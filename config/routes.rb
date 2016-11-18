@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "recipes#index"
   # Routes for the Combination resource:
   # CREATE
   get "/combinations/new", :controller => "combinations", :action => "new"
