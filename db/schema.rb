@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 20161122163804) do
     t.string   "difficulty"
     t.boolean  "favorite"
     t.integer  "category_id"
-    t.integer  "combination_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
