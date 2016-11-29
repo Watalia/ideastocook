@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
   ActiveAdmin.routes(self)
   root :to => "recipes#index"
   # Routes for the Combination resource:
@@ -17,23 +16,6 @@ Rails.application.routes.draw do
 
   # DELETE
   get "/delete_combination/:id", :controller => "combinations", :action => "destroy"
-  #------------------------------
-
-  # Routes for the Photo resource:
-  # CREATE
-  get "/photos/new", :controller => "photos", :action => "new"
-  post "/create_photo", :controller => "photos", :action => "create"
-
-  # READ
-  get "/photos", :controller => "photos", :action => "index"
-  get "/photos/:id", :controller => "photos", :action => "show"
-
-  # UPDATE
-  get "/photos/:id/edit", :controller => "photos", :action => "edit"
-  post "/update_photo/:id", :controller => "photos", :action => "update"
-
-  # DELETE
-  get "/delete_photo/:id", :controller => "photos", :action => "destroy"
   #------------------------------
 
   # Routes for the Category resource:
@@ -85,12 +67,7 @@ Rails.application.routes.draw do
 
   # DELETE
   get "/delete_recipe/:id", :controller => "recipes", :action => "destroy"
-
   #------------------------------
 
-  #SEARCH
-
-  root 'search#index'
-  get "/search", :controller => "search", :action => "index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

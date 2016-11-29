@@ -113,6 +113,15 @@
       <!-- Label and input for category_id -->
       <input type="hidden" name="category_id" value="<%= @category.id %>">
 
+      <!-- Label and input for image -->
+      <div class="form-group">
+        <label for="image" class="control-label">
+          Image
+        </label>
+
+        <input type="text" id="image" name="image" placeholder="Image" class="form-control" value="">
+      </div>
+
       <button class="btn btn-block btn-success">
         Create Recipe
       </button>

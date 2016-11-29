@@ -8,6 +8,9 @@
       <dt>Type</dt>
       <dd><%= @ingredient.type %></dd>
 
+      <dt>Name</dt>
+      <dd><%= @ingredient.name %></dd>
+
     </dl>
 
     <div class="btn-group btn-group-justified">
@@ -74,6 +77,37 @@
       </button>
     </form>
       </li>
+    </ul>
+  </div>
+</div>
+
+<!-- A Ingredient has many recipes -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Recipes
+      </li>
+
+      <% @ingredient.recipes.each do |recipe| %>
+        <li class="list-group-item">
+          <a href="/recipes/<%= recipe.id %>">
+            <%= recipe.cooking_time %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/recipes/<%= recipe.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/recipes/<%= recipe.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_recipe/<%= recipe.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>
