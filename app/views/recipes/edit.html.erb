@@ -80,6 +80,15 @@
         <%= select_tag(:category_id, options_from_collection_for_select(Category.all, :id, :name, @recipe.category_id), :class => "form-control") %>
       </div>
 
+      <!-- Label and input for image -->
+      <div class="form-group">
+        <label for="image" class="control-label">
+          Image
+        </label>
+
+        <input type="text" id="image" name="image" placeholder="Image" class="form-control" value="<%= @recipe.image %>">
+      </div>
+
       <button class="btn btn-warning">
         Update Recipe
       </button>

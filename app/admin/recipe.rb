@@ -1,6 +1,6 @@
 ActiveAdmin.register Recipe do
 
- permit_params :cooking_time, :name, :instructions, :final_tips, :difficulty, :favorite, :category_id
+ permit_params :cooking_time, :name, :instructions, :final_tips, :difficulty, :favorite, :category_id, :image
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

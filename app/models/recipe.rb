@@ -6,9 +6,6 @@ class Recipe < ApplicationRecord
   has_many   :combinations,
              :dependent => :destroy
 
-  has_many   :photos,
-             :dependent => :destroy
-
   # Indirect associations
 
   # Validations

@@ -36,15 +36,6 @@
         <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @recipe.name %>">
       </div>
 
-      <!-- Label and input for ingredients -->
-      <div class="form-group">
-        <label for="ingredient_id" class="control-label">
-          Ingredients
-        </label>
-
-        <%= select_tag(:ingredient_id, options_from_collection_for_select(Ingredient.all, :id, :name, @recipe.category_id), :class => "form-control") %>
-      </div>
-
       <!-- Label and input for instructions -->
       <div class="form-group">
         <label for="instructions" class="control-label">
@@ -87,6 +78,15 @@
         </label>
 
         <%= select_tag(:category_id, options_from_collection_for_select(Category.all, :id, :name, @recipe.category_id), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for image -->
+      <div class="form-group">
+        <label for="image" class="control-label">
+          Image
+        </label>
+
+        <input type="text" id="image" name="image" placeholder="Image" class="form-control" value="<%= @recipe.image %>">
       </div>
 
       <button class="btn btn-success">
