@@ -1,18 +1,13 @@
 class RecipesController < ApplicationController
   def index
     @q = Recipe.ransack(params[:q])
-    @recipes = @q.result(:distinct => true).includes(:photos, :combinations, :category).page(params[:page]).per(10)
+    @recipes = @q.result(:distinct => true).includes(:combinations, :category).page(params[:page]).per(10)
 
     render("recipes/index.html.erb")
   end
 
-  def search
-    
-  end
-
   def show
     @combination = Combination.new
-    @photo = Photo.new
     @recipe = Recipe.find(params[:id])
 
     render("recipes/show.html.erb")
@@ -34,6 +29,7 @@ class RecipesController < ApplicationController
     @recipe.difficulty = params[:difficulty]
     @recipe.favorite = params[:favorite]
     @recipe.category_id = params[:category_id]
+    @recipe.image = params[:image]
 
     save_status = @recipe.save
 
@@ -67,6 +63,7 @@ class RecipesController < ApplicationController
     @recipe.difficulty = params[:difficulty]
     @recipe.favorite = params[:favorite]
     @recipe.category_id = params[:category_id]
+    @recipe.image = params[:image]
 
     save_status = @recipe.save
 

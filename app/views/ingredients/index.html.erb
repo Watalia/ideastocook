@@ -14,6 +14,11 @@
   </div>
 
 <div class="form-group">
+    <%= f.label :name_cont, "Name contains" %>
+    <%= f.text_field :name_cont, :class => "form-control", :placeholder => "Name contains" %>
+  </div>
+
+<div class="form-group">
           <%= f.label :created_at, "Created at" %>
           <div class="row">
             <div class='col-md-6 mb-1'>
@@ -70,12 +75,14 @@
     <table class="table table-striped table-hover">
       <tr>
         <th>Type</th>
+        <th>Name</th>
         <th>Actions</th>
       </tr>
 
       <% @ingredients.each do |ingredient| %>
       <tr>
         <td><%= ingredient.type %></td>
+        <td><%= ingredient.name %></td>
         <td>
           <a href="/ingredients/<%= ingredient.id %>" class="btn btn-primary">Show</a>
           <a href="/ingredients/<%= ingredient.id %>/edit" class="btn btn-warning">Edit</a>

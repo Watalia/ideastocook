@@ -3,93 +3,117 @@
     Recipes
     <a href="/recipes/new" class="btn btn-lg btn-success">New Recipe</a>
   </h1>
-</div>
-
-<div class="row mb-1">
+</div><div class="row mb-1">
   <div class="col-md-12">
     <%= search_form_for @q, :class => "collapse", :id => "recipes_filters" do |f| %>
-    <p class="lead">Search for a recipe:</p>
+      <p class="lead">Narrow results:</p>
 
-    <div class="form-group">
-      <%= f.label :cooking_time, "Cooking time" %>
-      <div class="row">
-        <div class='col-md-6 mb-1'>
-          <%= f.text_field :cooking_time_gteq, :class => "form-control", :placeholder => "Cooking time greater than or equal to" %>
-        </div>
-        <div class='col-md-6'>
-          <%= f.text_field :cooking_time_lteq, :class => "form-control", :placeholder => "Cooking time less than or equal to" %>
-        </div>
+        <div class="form-group">
+  <%= f.label :cooking_time, "Cooking time" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :cooking_time_gteq, :class => "form-control", :placeholder => "Cooking time greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :cooking_time_lteq, :class => "form-control", :placeholder => "Cooking time less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+    <%= f.label :image_cont, "Image contains" %>
+    <%= f.text_field :image_cont, :class => "form-control", :placeholder => "Image contains" %>
+  </div>
+
+<div class="form-group">
+    <%= f.label :favorite_eq, "Favorite" %>
+    <div>
+      <label class="radio-inline">
+        <%= f.radio_button :favorite_eq, "1", checked: ((params[:q] && params[:q][:favorite_eq]) == "1" ? "checked" : "") %> Yes
+      </label>
+      <label class="radio-inline">
+        <%= f.radio_button :favorite_eq, "0", checked: ((params[:q] && params[:q][:favorite_eq]) == "0" ? "checked" : "")%> No
+      </label>
+      <label class="radio-inline">
+        <%= f.radio_button :favorite_eq, ""%> Either
+      </label>
+    </div>
+  </div>
+
+<div class="form-group">
+    <%= f.label :difficulty_cont, "Difficulty contains" %>
+    <%= f.text_field :difficulty_cont, :class => "form-control", :placeholder => "Difficulty contains" %>
+  </div>
+
+<div class="form-group">
+    <%= f.label :final_tips_cont, "Final tips contains" %>
+    <%= f.text_field :final_tips_cont, :class => "form-control", :placeholder => "Final tips contains" %>
+  </div>
+
+<div class="form-group">
+    <%= f.label :instructions_cont, "Instructions contains" %>
+    <%= f.text_field :instructions_cont, :class => "form-control", :placeholder => "Instructions contains" %>
+  </div>
+
+<div class="form-group">
+    <%= f.label :name_cont, "Name contains" %>
+    <%= f.text_field :name_cont, :class => "form-control", :placeholder => "Name contains" %>
+  </div>
+
+<div class="form-group">
+          <%= f.label :created_at, "Created at" %>
+          <div class="row">
+            <div class='col-md-6 mb-1'>
+              <div class='input-group date' id='created_atgteqPicker'>
+                  <%= f.text_field :created_at_gteq, :class => "form-control", :placeholder => "Created at greater than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+
+            <div class='col-md-6'>
+              <div class='input-group date' id='created_atlteqPicker'>
+                  <%= f.text_field :created_at_lteq, :class => "form-control", :placeholder => "Created at less than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+          </div>
       </div>
-    </div>
+      <script type="text/javascript">
+          $(function () {
+              $('#created_atgteqPicker').datetimepicker({
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#created_atlteqPicker').datetimepicker({
+                  useCurrent: false,
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#created_atgteqPicker').on("dp.change", function (e) {
+                  $('#created_atlteqPicker').data("DateTimePicker").minDate(e.date);
+              });
+              $('#created_atlteqPicker').on("dp.change", function (e) {
+                  $('#created_atgteqPicker').data("DateTimePicker").maxDate(e.date);
+              });
+          });
+      </script>
 
-    <div class="form-group">
-      <%= f.label :favorite_eq, "Favorite" %>
-      <div>
-        <label class="radio-inline">
-          <%= f.radio_button :favorite_eq, "1", checked: ((params[:q] && params[:q][:favorite_eq]) == "1" ? "checked" : "") %> Yes
-        </label>
-        <label class="radio-inline">
-          <%= f.radio_button :favorite_eq, "0", checked: ((params[:q] && params[:q][:favorite_eq]) == "0" ? "checked" : "")%> No
-        </label>
-        <label class="radio-inline">
-          <%= f.radio_button :favorite_eq, ""%> Either
-        </label>
-      </div>
-    </div>
-
-      <div class="form-group">
-      <%= f.label :instructions_cont, "Instructions contains" %>
-      <%= f.text_field :instructions_cont, :class => "form-control", :placeholder => "Instructions contains" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :name_cont, "Name contains" %>
-      <%= f.text_field :name_cont, :class => "form-control", :placeholder => "Name contains" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :created_at, "Created at" %>
-      <div class="row">
-      </div>
-    </div>
-    <script type="text/javascript">
-    $(function () {
-      $('#created_atgteqPicker').datetimepicker({
-        format: 'YYYY-MM-DD hh:mm:SS'
-      });
-      $('#created_atlteqPicker').datetimepicker({
-        useCurrent: false,
-        format: 'YYYY-MM-DD hh:mm:SS'
-      });
-      $('#created_atgteqPicker').on("dp.change", function (e) {
-        $('#created_atlteqPicker').data("DateTimePicker").minDate(e.date);
-      });
-      $('#created_atlteqPicker').on("dp.change", function (e) {
-        $('#created_atgteqPicker').data("DateTimePicker").maxDate(e.date);
-      });
-    });
-    </script>
-
-    <div class="form-group">
-      <%= f.label :photos_imagejpg_cont, "Photo imagejpg contains" %>
-      <%= f.text_field :photos_imagejpg_cont, :class => "form-control", :placeholder => "Photo imagejpg contains" %>
-    </div>
-
-    <div class="form-group">
+        <div class="form-group">
       <%= f.label :category_name_cont, "Category name contains" %>
       <%= f.text_field :category_name_cont, :class => "form-control", :placeholder => "Category name contains" %>
     </div>
 
-    <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
+      <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
-    <a href="/recipes" class="btn btn-default btn-block mb-1">Clear filters</a>
+      <a href="/recipes" class="btn btn-default btn-block mb-1">Clear filters</a>
     <% end %>
     <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#recipes_filters">
       Show Filters
     </a>
   </div>
 </div>
-
 
 <div class="row">
   <div class="col-md-12">
@@ -102,6 +126,7 @@
         <th>Difficulty</th>
         <th>Favorite</th>
         <th>Category</th>
+        <th>Image</th>
         <th>Actions</th>
       </tr>
 
@@ -120,6 +145,7 @@
             </a>
           <% end %>
         </td>
+        <td><%= recipe.image %></td>
         <td>
           <a href="/recipes/<%= recipe.id %>" class="btn btn-primary">Show</a>
           <a href="/recipes/<%= recipe.id %>/edit" class="btn btn-warning">Edit</a>
