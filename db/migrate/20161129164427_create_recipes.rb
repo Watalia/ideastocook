@@ -8,6 +8,7 @@ class CreateRecipes < ActiveRecord::Migration
       t.string :difficulty
       t.boolean :favorite
       t.integer :category_id
+      t.string :image
 
       t.timestamps
 
