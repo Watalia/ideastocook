@@ -6,6 +6,10 @@ class RecipesController < ApplicationController
     render("recipes/index.html.erb")
   end
 
+  def search
+    
+  end
+
   def show
     @combination = Combination.new
     @photo = Photo.new
