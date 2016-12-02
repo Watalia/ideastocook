@@ -14,4 +14,10 @@ class Recipe < ApplicationRecord
 
   # Validations
 
+  validates :cooking_time, :presence=>true
+  validates :name, :presence=>true, :uniqueness=>true
+  validates :instructions, :presence=>true
+  validates :image, :presence=>true
+
+
 end

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Ideastocook</title>
+  <title>MasterBear</title>
 
 
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -15,8 +15,8 @@
     }
   </style>
 
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%#= stylesheet_link_tag    "application", :media => "all" %>
+  <%#= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -35,16 +35,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="/" class="navbar-brand">Ideastocook</a>
+        <a class="navbar-brand" href="/">MasterBear</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/combinations">Combinations</a></li>
-          <li><a href="/categories">Categories</a></li>
-          <li><a href="/ingredients">Ingredients</a></li>
-          <li><a href="/recipes">Recipes</a></li>
+          <li><a href="/ingredients"><i class="fa fa-search" aria-hidden="true"></i>Search</a></li>
+          <li><a href="/recipes"><i class="fa fa-paw" aria-hidden="true"></i>Recipes</a></li>
           <li><a href="/rails/info">Sitemap</a></li>
         </ul>
 
